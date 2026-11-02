@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projets d'ingénierie d'Alexis Gros : Forge à induction ZVS, Logiciel copilote Énedis, BE Snake en C, Robotique de golf.">
+  <title>Projets d'Ingénierie — Alexis Gros (ENSEEIHT)</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- EN-TÊTE & NAVIGATION -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="./index.html" class="brand-link">
+        <span class="brand-badge">N<span>7</span></span>
+        <div>
+          <span class="brand-text">Alexis</span>
+          <span class="brand-sub">/ ENSEEIHT</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="./index.html"><span class="lang-fr">Accueil</span><span class="lang-en">Home</span></a></li>
+          <li><a href="./projets.html" class="active"><span class="lang-fr">Projets</span><span class="lang-en">Projects</span></a></li>
+          <li><a href="./parcours.html"><span class="lang-fr">Parcours</span><span class="lang-en">Background</span></a></li>
+          <li><a href="./engagements.html"><span class="lang-fr">Engagements</span><span class="lang-en">Leadership</span></a></li>
+          <li><a href="./contact.html"><span class="lang-fr">Contact &amp; CV</span><span class="lang-en">Contact &amp; Resume</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="lang-toggle-btn" type="button" aria-label="Changer de langue">
+          <span class="lang-fr">🇬🇧 English</span>
+          <span class="lang-en">🇫🇷 Français</span>
+        </button>
+        <button class="mobile-toggle" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="site-main">
+
+    <div class="page-header">
+      <div class="badges" style="margin-bottom: 0.75rem;">
+        <span class="badge blue-detail"><span class="lang-fr">Projets Techniques &amp; Réalisations</span><span class="lang-en">Technical Projects &amp; Implementations</span></span>
+        <span class="badge">1A ENSEEIHT &bull; 3EA</span>
+      </div>
+      <h1 class="page-title">
+        <span class="lang-fr">Projets &amp; <span class="accent">Réalisations Techniques</span></span>
+        <span class="lang-en">Projects &amp; <span class="accent">Engineering Work</span></span>
+      </h1>
+      <p class="page-subtitle">
+        <span class="lang-fr">
+          Présentation détaillée de mes réalisations techniques : électronique de puissance, programmation système bas niveau, outils logiciels d'aide à la décision et modélisation physique.
+        </span>
+        <span class="lang-en">
+          Detailed overview of my technical projects: power electronics, low-level systems programming, decision-support software, and computational physics.
+        </span>
+      </p>
+    </div>
+
+    <!-- PROJET 1 : FORGE À INDUCTION ZVS -->
+    <article class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge-context">TIPE &bull; CPGE MPSI / MP (2024-2026)</span>
+          <h2 class="card-title" style="font-size: 1.45rem;">
+            <span class="lang-fr">Conception et étude d'une Forge à Induction Résonante ZVS</span>
+            <span class="lang-en">Design and Study of a ZVS Resonant Induction Furnace</span>
+          </h2>
+          <div class="card-subtitle">
+            <span class="lang-fr">Électronique de puissance, résonance électromagnétique et conversion thermique</span>
+            <span class="lang-en">Power electronics, electromagnetic resonance, and thermal induction</span>
+          </div>
+        </div>
+        <span class="badge white"><span class="lang-fr">Hardware &amp; Physique</span><span class="lang-en">Hardware &amp; Physics</span></span>
+      </div>
+
+      <p class="card-desc">
+        <span class="lang-fr">
+          Dans le cadre de mon TIPE en classe préparatoire MP, j'ai conçu, dimensionné et expérimenté une forge à induction haute fréquence basée sur une topologie d'oscillateur résonant à commutation au zéro de tension (<strong>ZVS - Zero Voltage Switching</strong>, montage Mazzilli). L'objectif était de chauffer des pièces métalliques par induction électromagnétique tout en minimisant les pertes par commutation dans les transistors MOSFET de puissance.
+        </span>
+        <span class="lang-en">
+          As part of my independent STEM research project (TIPE) in MP preparatory class, I engineered, sized, and tested a high-frequency induction heating system based on a <strong>Zero Voltage Switching (ZVS)</strong> resonant oscillator topology (Mazzilli inverter). The core goal was to heat metallic targets via electromagnetic induction while eliminating switching losses across power MOSFETs.
+        </span>
+      </p>
+
+      <div class="project-specs">
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Topologie</span><span class="lang-en">Topology</span></div>
+          <div class="spec-value">Oscillateur push-pull résonant LC (ZVS)</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Composants clés</span><span class="lang-en">Key Components</span></div>
+          <div class="spec-value">MOSFETs de puissance, self bifilaire, banc LC</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Physique appliquée</span><span class="lang-en">Applied Physics</span></div>
+          <div class="spec-value">Courants de Foucault, effet de peau, résonance</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Validation</span><span class="lang-en">Validation</span></div>
+          <div class="spec-value"><span class="lang-fr">Relevés oscilloscope &amp; montée thermique</span><span class="lang-en">Oscilloscope waveforms &amp; thermal rise</span></div>
+        </div>
+      </div>
+
+      <div class="project-note">
+        <strong><span class="lang-fr">Ce que ce projet m'a apporté :</span><span class="lang-en">Key Takeaways:</span></strong>
+        <span class="lang-fr">
+          Ce projet m'a permis de confronter les modèles théoriques d'électromagnétisme aux réalités de l'électronique de puissance : gestion de courants réactifs intenses, choix de condensateurs à très faible résistance série (ESR), et dissipation thermique des semi-conducteurs.
+        </span>
+        <span class="lang-en">
+          This project bridged theoretical electromagnetics with real-world power electronics: handling high reactive currents in the tank circuit, selecting low-ESR capacitors, and active semiconductor heat dissipation.
+        </span>
+      </div>
+
+      <div class="tag-list">
+        <span class="tag accent">Électronique de puissance</span>
+        <span class="tag accent">ZVS (Zero Voltage Switching)</span>
+        <span class="tag accent">Circuit RLC résonant</span>
+        <span class="tag">Courants de Foucault</span>
+        <span class="tag">MOSFET</span>
+        <span class="tag">Oscilloscope</span>
+      </div>
+    </article>
+
+    <!-- PROJET 2 : COPILOTE TECHNICIEN ENEDIS -->
+    <article class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge-context"><span class="lang-fr">Hackathon d'Innovation &bull; Travail en Équipe</span><span class="lang-en">Innovation Hackathon &bull; Teamwork</span></span>
+          <h2 class="card-title" style="font-size: 1.45rem;">
+            <span class="lang-fr">Logiciel Copilote pour Technicien de Réseau Électrique (Énedis)</span>
+            <span class="lang-en">Interactive Co-pilot for Grid Field Technicians (Énedis)</span>
+          </h2>
+          <div class="card-subtitle">
+            <span class="lang-fr">Aide à la décision terrain, sécurisation des interventions et conformité électrique</span>
+            <span class="lang-en">Field decision support, intervention safety, and electrical compliance</span>
+          </div>
+        </div>
+        <span class="badge white"><span class="lang-fr">Hackathon &amp; Logiciel</span><span class="lang-en">Hackathon &amp; Software</span></span>
+      </div>
+
+      <p class="card-desc">
+        <span class="lang-fr">
+          Conçu en équipe lors d'un hackathon axé sur les défis des réseaux de distribution, ce projet répond à une problématique terrain majeure d'Énedis : guider pas-à-pas les techniciens lors d'interventions de maintenance ou de dépannage sur le réseau électrique. L'application agit comme un copilote interactif garantissant le respect strict des étapes de consignation, de Vérification d'Absence de Tension (VAT) et des consignes de sécurité.
+        </span>
+        <span class="lang-en">
+          Developed in a team during an innovation hackathon addressing smart grid challenges, this tool tackles a critical field requirement for distribution operator Énedis: providing structured guidance to technicians during substation maintenance and emergency troubleshooting, ensuring strict compliance with safety protocols.
+        </span>
+      </p>
+
+      <div class="project-specs">
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Format</span><span class="lang-en">Format</span></div>
+          <div class="spec-value"><span class="lang-fr">Hackathon intensif en équipe</span><span class="lang-en">Intensive team hackathon</span></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Enjeu métier</span><span class="lang-en">Domain Focus</span></div>
+          <div class="spec-value"><span class="lang-fr">Sécurité électrique, consignation, conformité</span><span class="lang-en">Electrical safety, lockout/tagout, compliance</span></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Architecture</span><span class="lang-en">Architecture</span></div>
+          <div class="spec-value"><span class="lang-fr">Arbre de décision logique, interface ergonomique</span><span class="lang-en">Interactive decision tree, field UX</span></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Livrable</span><span class="lang-en">Deliverable</span></div>
+          <div class="spec-value"><span class="lang-fr">Prototype logiciel fonctionnel &amp; Pitch</span><span class="lang-en">Functional software prototype &amp; pitch</span></div>
+        </div>
+      </div>
+
+      <div class="project-note">
+        <strong><span class="lang-fr">Ce que ce projet m'a apporté :</span><span class="lang-en">Key Takeaways:</span></strong>
+        <span class="lang-fr">
+          Une excellente expérience de prototypage rapide sous contrainte de temps, combinant analyse des règles de sécurité industrielle et présentation synthétique du produit devant un jury de professionnels.
+        </span>
+        <span class="lang-en">
+          A great experience in rapid prototyping under tight deadlines, bridging industrial safety regulations with user-centric software design and pitching to a professional jury.
+        </span>
+      </div>
+
+      <div class="tag-list">
+        <span class="tag accent">Énedis</span>
+        <span class="tag accent">Sécurité électrique</span>
+        <span class="tag accent">Arbre de décision</span>
+        <span class="tag">Travail en équipe</span>
+        <span class="tag">Git</span>
+      </div>
+    </article>
+
+    <!-- PROJET 3 : BE JEU DU SNAKE EN LANGAGE C -->
+    <article class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge-context">Bureau d'Études (BE) &bull; ENSEEIHT 1A (2026)</span>
+          <h2 class="card-title" style="font-size: 1.45rem;">
+            <span class="lang-fr">Développement d'un Moteur de Jeu Snake en Langage C</span>
+            <span class="lang-en">Snake Engine &amp; Game Architecture in C Language</span>
+          </h2>
+          <div class="card-subtitle">
+            <span class="lang-fr">Programmation système, allocation dynamique de mémoire et architecture modulaire</span>
+            <span class="lang-en">System programming, dynamic memory allocation, and modular architecture</span>
+          </div>
+        </div>
+        <span class="badge white"><span class="lang-fr">Programmation C</span><span class="lang-en">C Programming</span></span>
+      </div>
+
+      <p class="card-desc">
+        <span class="lang-fr">
+          Réalisé dans le cadre du cursus d'informatique à l'ENSEEIHT, ce bureau d'études avait pour objectif d'implémenter intégralement le jeu Snake en langage C. L'accent a été mis sur la qualité d'ingénierie logicielle : modularité stricte (séparation headers `.h` et sources `.c`), gestion dynamique de la mémoire sans fuite validée sous `valgrind`, et boucle d'événements cadencée.
+        </span>
+        <span class="lang-en">
+          Conducted within the core computer science curriculum at ENSEEIHT, this lab focused on building a complete Snake game engine in pure C. The emphasis was placed on code hygiene, strict modular encapsulation (`.h` / `.c`), leak-free dynamic memory management verified with `valgrind`, and non-blocking event loops.
+        </span>
+      </p>
+
+      <div class="project-specs">
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Langage &amp; Outils</span><span class="lang-en">Language &amp; Tools</span></div>
+          <div class="spec-value">Langage C, GCC, Make / Makefile</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Structures de données</span><span class="lang-en">Data Structures</span></div>
+          <div class="spec-value"><span class="lang-fr">Files dynamiques / listes chaînées</span><span class="lang-en">Dynamic queues / linked structures</span></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Gestion mémoire</span><span class="lang-en">Memory Safety</span></div>
+          <div class="spec-value"><span class="lang-fr">Contrôle strict des pointeurs &amp; Valgrind (0 fuite)</span><span class="lang-en">Clean pointer management &amp; 0 leak Valgrind</span></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Contrôle du jeu</span><span class="lang-en">Game Control</span></div>
+          <div class="spec-value"><span class="lang-fr">Machine à états finis, gestion des entrées clavier</span><span class="lang-en">Finite State Machine, user input handling</span></div>
+        </div>
+      </div>
+
+      <div class="project-note">
+        <strong><span class="lang-fr">Ce que ce projet m'a apporté :</span><span class="lang-en">Key Takeaways:</span></strong>
+        <span class="lang-fr">
+          Une excellente maîtrise de la mémoire et des pointeurs en C, des bases indispensables pour la programmation bas niveau de microcontrôleurs et de systèmes embarqués en automatique/robotique.
+        </span>
+        <span class="lang-en">
+          Solid command of memory layout and pointer mechanics in C, foundational for low-level microcontroller programming and embedded control systems in robotics.
+        </span>
+      </div>
+
+      <div class="tag-list">
+        <span class="tag accent">Langage C</span>
+        <span class="tag accent">Structures de données</span>
+        <span class="tag accent">Valgrind</span>
+        <span class="tag">Make / Makefile</span>
+        <span class="tag">ENSEEIHT 1A</span>
+      </div>
+    </article>
+
+    <!-- PROJET 4 : ROBOT RAMASSEUR DE BALLES DE GOLF -->
+    <article class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge-context"><span class="lang-fr">Olympiades des Sciences de l'Ingénieur &bull; Concours</span><span class="lang-en">Engineering Sciences Olympiads &bull; Contest</span></span>
+          <h2 class="card-title" style="font-size: 1.45rem;">
+            <span class="lang-fr">Étude et Pré-conception d'un Robot Ramasseur de Balles de Golf</span>
+            <span class="lang-en">Study and Preliminary Design of an Autonomous Golf Ball Retriever</span>
+          </h2>
+          <div class="card-subtitle">
+            <span class="lang-fr">Mécatronique, analyse du cahier des charges et modélisation cinématique</span>
+            <span class="lang-en">Mechatronics, technical specification analysis, and kinematic modeling</span>
+          </div>
+        </div>
+        <span class="badge white"><span class="lang-fr">Mécatronique &amp; SI</span><span class="lang-en">Mechatronics &amp; Eng.</span></span>
+      </div>
+
+      <p class="card-desc">
+        <span class="lang-fr">
+          Présenté lors des concours de jeunes ingénieurs et Olympiades SI, ce projet portait sur la pré-conception mécatronique d'un robot mobile autonome destiné à la collecte de balles sur practice de golf. Le travail a couvert la formalisation du cahier des charges fonctionnel, la modélisation cinématique des déplacements et le dimensionnement mécanique du mécanisme de capture.
+        </span>
+        <span class="lang-en">
+          Presented at youth engineering competitions and the French Engineering Sciences Olympiads, this project addressed the mechatronic preliminary design of an autonomous mobile collection robot for golf practice ranges: functional requirements analysis, mobile kinematics, and pickup sizing.
+        </span>
+      </p>
+
+      <div class="project-specs">
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Méthodologie</span><span class="lang-en">Methodology</span></div>
+          <div class="spec-value"><span class="lang-fr">Ingénierie système SysML &amp; Cahier des charges</span><span class="lang-en">SysML systems engineering &amp; specs</span></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Mécanisme de ramassage</span><span class="lang-en">Mechanism</span></div>
+          <div class="spec-value"><span class="lang-fr">Disques flexibles crantés &amp; trémie de stockage</span><span class="lang-en">Flexible grooved discs &amp; storage hopper</span></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Motorisation</span><span class="lang-en">Drive System</span></div>
+          <div class="spec-value"><span class="lang-fr">Calcul de couple moteur &amp; autonomie batterie</span><span class="lang-en">Motor torque sizing &amp; battery budget</span></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label"><span class="lang-fr">Cadre</span><span class="lang-en">Context</span></div>
+          <div class="spec-value"><span class="lang-fr">Concours jeune ingénieur</span><span class="lang-en">Youth engineering contest showcase</span></div>
+        </div>
+      </div>
+
+      <div class="tag-list">
+        <span class="tag accent">Mécatronique</span>
+        <span class="tag accent">Robotique mobile</span>
+        <span class="tag accent">SysML</span>
+        <span class="tag">Cinématique</span>
+      </div>
+    </article>
+
+    <!-- PROJET 5 : CALCUL SCIENTIFIQUE PYTHON -->
+    <article class="project-card">
+      <div class="project-header">
+        <div>
+          <span class="project-badge-context">CPGE MPSI / MP &bull; ENSEEIHT (2024-2026)</span>
+          <h2 class="card-title" style="font-size: 1.45rem;">
+            <span class="lang-fr">Modélisation Numérique et Simulation de Systèmes Physiques (Python)</span>
+            <span class="lang-en">Computational Modeling &amp; Dynamic System Simulation (Python)</span>
+          </h2>
+          <div class="card-subtitle">
+            <span class="lang-fr">Résolution d'équations différentielles, traitement du signal et analyse harmonique</span>
+            <span class="lang-en">Differential equation solvers, signal processing, and harmonic analysis</span>
+          </div>
+        </div>
+        <span class="badge white"><span class="lang-fr">Python &amp; Calcul</span><span class="lang-en">Python &amp; Computing</span></span>
+      </div>
+
+      <p class="card-desc">
+        <span class="lang-fr">
+          Développement de scripts de simulation numérique en Python pour étudier des oscillateurs amortis, la réponse indicielle de filtres passe-bande, des trajectoires avec frottements et la décomposition en séries de Fourier de signaux périodiques.
+        </span>
+        <span class="lang-en">
+          Development of scientific computing scripts in Python to analyze the time- and frequency-domain behavior of physical systems: damped oscillators, filter step response, aerodynamic trajectories, and Fourier series spectral decomposition.
+        </span>
+      </p>
+
+      <div class="tag-list">
+        <span class="tag accent">Python</span>
+        <span class="tag accent">NumPy / SciPy</span>
+        <span class="tag accent">Matplotlib</span>
+        <span class="tag">Équations différentielles</span>
+        <span class="tag">Analyse harmonique</span>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- PIED DE PAGE -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        &copy; 2026 Alexis Gros &bull; Élève-Ingénieur ENSEEIHT (3EA) &bull; 
+        <span class="lang-fr">Hébergé sur GitHub Pages</span>
+        <span class="lang-en">Hosted on GitHub Pages</span>
+      </div>
+      <div class="footer-links">
+        <a href="./cv.pdf" target="_blank"><span class="lang-fr">CV Français</span><span class="lang-en">French Resume</span></a>
+        <a href="./contact.html">Contact</a>
+        <a href="https://github.com/Alexis-Gros/portfolio" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
