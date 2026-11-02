@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexis Gros — Élève Ingénieur ENSEEIHT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --border: #e5e5e5;
+      --text-main: #171717;
+      --text-muted: #737373;
+      --accent: #0f172a;
+      --accent-hover: #334155;
+      --tag-bg: #f1f5f9;
+      --tag-text: #475569;
+      --radius: 8px;
+      --transition: 0.2s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* En-tête & Navigation */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand span {
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: color var(--transition), background-color var(--transition);
+    }
+
+    .nav-btn:hover {
+      color: var(--text-main);
+      background-color: var(--tag-bg);
+    }
+
+    .nav-btn.active {
+      color: var(--text-main);
+      background-color: var(--tag-bg);
+      font-weight: 600;
+    }
+
+    /* Contenu principal */
+    main {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Typographie */
+    h1 {
+      font-size: 2.25rem;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+
+    /* Cartes & Composants */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 680px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color var(--transition);
+    }
+
+    .card:hover {
+      border-color: #cbd5e1;
+    }
+
+    .card-header {
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Tags techniques */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: auto;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    /* Timeline Expériences */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--border);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 0.35rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-main);
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .timeline-place {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Boutons & Liens */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color var(--transition), color var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--tag-bg);
+      border-color: #cbd5e1;
+    }
+
+    /* Pied de page */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    @media (max-width: 640px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#accueil" class="brand" onclick="navigateTo('accueil')">Alexis Gros <span>/ ENSEEIHT</span></a>
+      <nav>
+        <button class="nav-btn active" onclick="navigateTo('accueil')">Accueil</button>
+        <button class="nav-btn" onclick="navigateTo('projets')">Projets</button>
+        <button class="nav-btn" onclick="navigateTo('experiences')">Parcours &amp; Expériences</button>
+        <button class="nav-btn" onclick="navigateTo('passions')">Engagements &amp; Passions</button>
+        <button class="nav-btn" onclick="navigateTo('contact')">Contact</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE 1 : ACCUEIL -->
+    <section id="accueil" class="page active">
+      <h1>Alexis Gros</h1>
+      <p class="lead">
+        Élève ingénieur en 1<sup>re</sup> année à l'<strong>ENSEEIHT</strong> (Toulouse) au sein du département <strong>EEEA</strong> (Électronique, Énergie Électrique, Automatique).
+      </p>
+      <p>
+        Issu de classe préparatoire scientifique (MPSI / MP), je m'oriente vers les métiers de l'<strong>énergie</strong>, de la <strong>mécatronique</strong> et des <strong>systèmes embarqués</strong>. Curieux et rigoureux, je conçois ce portfolio comme un espace d'état de l'art de mon profil technique et managérial.
+      </p>
+
+      <div class="card" style="margin-top: 2rem; background: var(--surface);">
+        <div class="card-header">
+          <div class="card-title">Compétences en développement</div>
+          <div class="card-subtitle">Socle scientifique et technique actuel</div>
+        </div>
+        <div class="tags" style="margin-top: 0.5rem;">
+          <span class="tag">C (apprentissage N7)</span>
+          <span class="tag">Python (CPGE)</span>
+          <span class="tag">Mathématiques &amp; Modélisation</span>
+          <span class="tag">Physique appliquée</span>
+          <span class="tag">Suite Microsoft 365</span>
+          <span class="tag">Premiere Pro</span>
+          <span class="tag">Git &amp; GitHub</span>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="navigateTo('projets')">Découvrir mes réalisations</button>
+        <button class="btn btn-outline" onclick="navigateTo('contact')">Me contacter</button>
+      </div>
+    </section>
+
+    <!-- PAGE 2 : PROJETS -->
+    <section id="projets" class="page">
+      <h2>Projets &amp; Réalisations</h2>
+      <p>Aperçu de mes démarches d'ingénierie, hackathons et travaux pratiques de conception.</p>
+
+      <div class="grid grid-2">
+        <!-- Hackathon ENSEEIHT -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Hackathon d'intégration N7</div>
+            <div class="card-subtitle">ENSEEIHT — Début 1A</div>
+          </div>
+          <p>
+            Participation au hackathon d'accueil de l'école axé sur la collaboration et l'idéation rapide. Développement d'un prototype technique et publication de la démo sur dépôt Git.
+          </p>
+          <div class="tags">
+            <span class="tag">Travail d'équipe</span>
+            <span class="tag">Prototypage rapide</span>
+            <span class="tag">Git / GitHub</span>
+          </div>
+        </div>
+
+        <!-- Robot ramasseur de balles -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Robot ramasseur de balles de golf</div>
+            <div class="card-subtitle">Olympiades des Sciences de l'Ingénieur</div>
+          </div>
+          <p>
+            Étude et pré-conception d'un robot autonome dédié au ramassage de balles sur practice. Analyse du cahier des charges, modélisation cinématique, choix d'actionneurs et architecture globale.
+          </p>
+          <div class="tags">
+            <span class="tag">Mécatronique</span>
+            <span class="tag">Sciences de l'Ingénieur</span>
+            <span class="tag">Cahier des charges</span>
+          </div>
+        </div>
+
+        <!-- Programmation C / Algorithmique -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Bases matérielles et programmation C</div>
+            <div class="card-subtitle">Formation ingénieur N7</div>
+          </div>
+          <p>
+            Développement d'algorithmes et structuration du code bas niveau en langage C pour préparer la couche logicielle des systèmes mécatroniques et embarqués.
+          </p>
+          <div class="tags">
+            <span class="tag">Langage C</span>
+            <span class="tag">Algorithmique</span>
+            <span class="tag">Bas niveau</span>
+          </div>
+        </div>
+
+        <!-- TIPE / Modélisation CPGE -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Modélisation &amp; Simulation scientifique</div>
+            <div class="card-subtitle">CPGE Paul Cézanne</div>
+          </div>
+          <p>
+            Résolution de problématiques physiques et mathématiques appliquées. Traitement de données, simulation numérique et scripts d'analyse sous Python.
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Calcul scientifique</span>
+            <span class="tag">Physique</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3 : EXPÉRIENCES -->
+    <section id="experiences" class="page">
+      <h2>Parcours académique &amp; Expériences</h2>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2024 — Présent</div>
+          <div class="timeline-title">Formation d'Ingénieur — Filière EEEA</div>
+          <div class="timeline-place">Toulouse INP — ENSEEIHT</div>
+          <p>
+            Département Électronique, Énergie Électrique, Automatique. Orientation ciblée vers l'énergie, les chaînes de conversion et la commande des systèmes mécatroniques.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2024 — Présent</div>
+          <div class="timeline-title">Campagne Junior Entreprise</div>
+          <div class="timeline-place">N7 Consulting</div>
+          <p>
+            Implication active dans la campagne de recrutement de la Junior Entreprise de l'école. Développement de compétences en gestion d'équipe, négociation et relation client.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2022 — 2024</div>
+          <div class="timeline-title">Classes Préparatoires aux Grandes Écoles (MPSI / MP)</div>
+          <div class="timeline-place">Lycée Paul Cézanne — Aix-en-Provence</div>
+          <p>
+            Formation intensive en mathématiques, physique et sciences de l'ingénieur. Acquisition d'une grande rigueur méthodologique et consolidation des capacités d'analyse critique.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Immersion découverte</div>
+          <div class="timeline-title">Stage en centrale nucléaire</div>
+          <div class="timeline-place">EDF</div>
+          <p>
+            Observation encadrée par un ingénieur-docteur : sensibilisation aux réactions nucléaires, aux protocoles de sûreté et aux défis de la production d'énergie à grande échelle.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4 : PASSIONS & ENGAGEMENTS -->
+    <section id="passions" class="page">
+      <h2>Engagements &amp; Centres d'intérêt</h2>
+      <p>Compétences transversales forgées par le sport collectif, l'expression orale et les projets associatifs.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Communication &amp; Prise de parole</div>
+          </div>
+          <p>
+            Lauréat / participant à des concours d'éloquence au lycée. Aisance à l'oral, structuration des idées et capacité à convaincre en public.
+          </p>
+          <div class="tags">
+            <span class="tag">Éloquence</span>
+            <span class="tag">Vulgarisation</span>
+            <span class="tag">Débat</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Esprit d'équipe &amp; Résilience sportive</div>
+          </div>
+          <p>
+            Pratique assidue en club : Rugby (6 ans), Judo (6 ans) et Handball (4 ans). Sens fort de la cohésion, du respect des règles et de la persévérance.
+          </p>
+          <div class="tags">
+            <span class="tag">Rugby</span>
+            <span class="tag">Judo</span>
+            <span class="tag">Handball</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Création visuelle &amp; Montage</div>
+          </div>
+          <p>
+            Passionné de cinéma et de culture générale. Conception graphique et montages vidéo sous Adobe Premiere Pro pour des projets personnels et associatifs.
+          </p>
+          <div class="tags">
+            <span class="tag">Premiere Pro</span>
+            <span class="tag">Montage photo</span>
+            <span class="tag">Storytelling</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Engagement citoyen &amp; Tutorat</div>
+          </div>
+          <p>
+            Community manager du Conseil de la Vie Lycéenne (CVL), membre actif du foyer des élèves et séances de tutorat scolaire individuel.
+          </p>
+          <div class="tags">
+            <span class="tag">Pédagogie</span>
+            <span class="tag">Vie associative</span>
+            <span class="tag">Coordination</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 5 : CONTACT -->
+    <section id="contact" class="page">
+      <h2>Contact</h2>
+      <p>Disponible pour échanger sur mes projets mécatroniques ou mes perspectives de stage.</p>
+
+      <div class="card" style="margin-bottom: 2rem;">
+        <p style="color: var(--text-main); margin-bottom: 0.5rem;"><strong>Alexis Gros</strong></p>
+        <p style="margin-bottom: 0.25rem;">Toulouse, France &bull; Mobilité Permis B</p>
+        <p style="margin-bottom: 0.25rem;">Email : <a href="mailto:alexis.gros04@gmail.com" style="color: inherit; text-decoration: underline;">alexis.gros04@gmail.com</a></p>
+        <p style="margin-bottom: 0;">Téléphone : +33 7 69 98 22 77</p>
+      </div>
+
+      <div class="btn-group">
+        <a href="mailto:alexis.gros04@gmail.com" class="btn btn-primary">Envoyer un email</a>
+        <a href="cv.pdf" target="_blank" class="btn btn-outline">Télécharger mon CV (PDF)</a>
+        <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Alexis Gros &mdash; E-portfolio ENSEEIHT &bull; Hébergé sur GitHub Pages
+  </footer>
+
+  <script>
+    function navigateTo(pageId) {
+      // Masquer toutes les sections
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('active'));
+
+      // Désélectionner tous les boutons du menu
+      const navButtons = document.querySelectorAll('.nav-btn');
+      navButtons.forEach(btn => btn.classList.remove('active'));
+
+      // Activer la section cible
+      const targetPage = document.getElementById(pageId);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+
+      // Mettre en évidence le bon bouton de navigation
+      const activeBtn = Array.from(navButtons).find(btn => 
+        btn.getAttribute('onclick').includes(pageId)
+      );
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+
+      // Mettre à jour l'URL sans recharger
+      history.pushState(null, null, '#' + pageId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Gestion du rechargement et de l'historique de navigation
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && document.getElementById(hash)) {
+        navigateTo(hash);
+      }
+    });
+
+    window.addEventListener('popstate', () => {
+      const hash = window.location.hash.replace('#', '') || 'accueil';
+      if (document.getElementById(hash)) {
+        navigateTo(hash);
+      }
+    });
+  </script>
+</body>
+</html>
