@@ -226,6 +226,54 @@ header.site-header {
 }
 
 /* --------------------------------------------------
+   LECTEUR VIDÉO VERTICAL (PITCH 9:16)
+   -------------------------------------------------- */
+.video-box-vertical {
+  max-width: 300px;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  margin: 1.5rem auto 2rem;
+  background: #000000;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-box-vertical video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-placeholder-notice {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(17, 19, 26, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 0.85rem 1rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.video-placeholder-notice code {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--blue-cyan);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+/* --------------------------------------------------
    MAIN CONTAINER & TYPOGRAPHIE
    -------------------------------------------------- */
 main.site-main {
