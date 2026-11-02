@@ -28,6 +28,14 @@
       padding: 0;
     }
 
+    /* Gestion du bilinguisme */
+    html[lang="fr"] .lang-en {
+      display: none !important;
+    }
+    html[lang="en"] .lang-fr {
+      display: none !important;
+    }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg);
@@ -55,6 +63,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
     }
 
     .brand {
@@ -63,6 +72,7 @@
       color: var(--text-main);
       text-decoration: none;
       letter-spacing: -0.02em;
+      white-space: nowrap;
     }
 
     .brand span {
@@ -70,9 +80,17 @@
       color: var(--text-muted);
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
     nav {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.25rem;
+      flex-wrap: wrap;
     }
 
     .nav-btn {
@@ -82,7 +100,7 @@
       font-size: 0.9rem;
       font-weight: 500;
       color: var(--text-muted);
-      padding: 0.4rem 0.8rem;
+      padding: 0.4rem 0.75rem;
       border-radius: var(--radius);
       cursor: pointer;
       transition: color var(--transition), background-color var(--transition);
@@ -97,6 +115,35 @@
       color: var(--text-main);
       background-color: var(--tag-bg);
       font-weight: 600;
+    }
+
+    /* Séparateur et bouton de langue */
+    .nav-divider {
+      width: 1px;
+      height: 20px;
+      background-color: var(--border);
+      margin: 0 0.25rem;
+    }
+
+    .lang-toggle-btn {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: background-color var(--transition), border-color var(--transition);
+    }
+
+    .lang-toggle-btn:hover {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
     }
 
     /* Contenu principal */
@@ -153,7 +200,7 @@
       max-width: 700px;
     }
 
-    /* Cartes & Composants */
+    /* Cartes & Grille */
     .grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -314,14 +361,17 @@
       margin-top: auto;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .nav-container {
         flex-direction: column;
-        gap: 1rem;
+        align-items: stretch;
+      }
+      .nav-actions {
+        justify-content: space-between;
       }
       nav {
-        flex-wrap: wrap;
-        justify-content: center;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
       }
       h1 {
         font-size: 1.8rem;
@@ -335,67 +385,114 @@
   <header>
     <div class="nav-container">
       <a href="#accueil" class="brand" onclick="navigateTo('accueil')">Alexis Gros <span>/ ENSEEIHT</span></a>
-      <nav>
-        <button class="nav-btn active" onclick="navigateTo('accueil')">Accueil</button>
-        <button class="nav-btn" onclick="navigateTo('projets')">Projets</button>
-        <button class="nav-btn" onclick="navigateTo('experiences')">Parcours &amp; Expériences</button>
-        <button class="nav-btn" onclick="navigateTo('passions')">Engagements &amp; Passions</button>
-        <button class="nav-btn" onclick="navigateTo('contact')">Contact</button>
-      </nav>
+      <div class="nav-actions">
+        <nav>
+          <button class="nav-btn active" onclick="navigateTo('accueil')">
+            <span class="lang-fr">Accueil</span>
+            <span class="lang-en">Home</span>
+          </button>
+          <button class="nav-btn" onclick="navigateTo('projets')">
+            <span class="lang-fr">Projets</span>
+            <span class="lang-en">Projects</span>
+          </button>
+          <button class="nav-btn" onclick="navigateTo('experiences')">
+            <span class="lang-fr">Parcours &amp; Expériences</span>
+            <span class="lang-en">Background</span>
+          </button>
+          <button class="nav-btn" onclick="navigateTo('passions')">
+            <span class="lang-fr">Engagements &amp; Passions</span>
+            <span class="lang-en">Activities</span>
+          </button>
+          <button class="nav-btn" onclick="navigateTo('contact')">
+            <span>Contact</span>
+          </button>
+        </nav>
+        <div class="nav-divider"></div>
+        <button id="lang-toggle-btn" class="lang-toggle-btn" onclick="toggleLanguage()" title="Switch language">
+          🌐 <span>EN</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- PAGE 1 : ACCUEIL -->
+    <!-- PAGE 1 : ACCUEIL / HOME -->
     <section id="accueil" class="page active">
       <h1>Alexis Gros</h1>
       <p class="lead">
-        Élève ingénieur en 1<sup>re</sup> année à l'<strong>ENSEEIHT</strong> (Toulouse) au sein du département <strong>EEEA</strong> (Électronique, Énergie Électrique, Automatique).
+        <span class="lang-fr">Élève ingénieur en 1<sup>re</sup> année à l'<strong>ENSEEIHT</strong> (Toulouse) au sein du département <strong>EEEA</strong> (Électronique, Énergie Électrique, Automatique).</span>
+        <span class="lang-en">First-year engineering student at <strong>ENSEEIHT</strong> (Toulouse) in the <strong>EEEA</strong> department (Electronics, Electrical Energy, Automation).</span>
       </p>
       <p>
-        Issu de classe préparatoire scientifique (MPSI / MP), je m'oriente vers les métiers de l'<strong>énergie</strong>, de la <strong>mécatronique</strong> et des <strong>systèmes embarqués</strong>. Curieux et rigoureux, je conçois ce portfolio comme un espace d'état de l'art de mon profil technique et managérial.
+        <span class="lang-fr">Issu de classe préparatoire scientifique (MPSI / MP), je m'oriente vers les métiers de l'<strong>énergie</strong>, de la <strong>mécatronique</strong> et des <strong>systèmes embarqués</strong>. Curieux et rigoureux, ce portfolio présente l'état de l'art de mon parcours technique et méthodologique.</span>
+        <span class="lang-en">With a background in intensive STEM preparatory classes (MPSI / MP), I am directing my studies toward <strong>energy</strong>, <strong>mechatronics</strong>, and <strong>embedded systems</strong>. Methodical and driven by engineering challenges, this portfolio presents my technical and academic milestones.</span>
       </p>
 
       <div class="card" style="margin-top: 2rem; background: var(--surface);">
         <div class="card-header">
-          <div class="card-title">Compétences en développement</div>
-          <div class="card-subtitle">Socle scientifique et technique actuel</div>
+          <div class="card-title">
+            <span class="lang-fr">Compétences en développement</span>
+            <span class="lang-en">Technical &amp; Core Skills</span>
+          </div>
+          <div class="card-subtitle">
+            <span class="lang-fr">Socle scientifique et informatique actuel</span>
+            <span class="lang-en">Current scientific and engineering foundation</span>
+          </div>
         </div>
         <div class="tags" style="margin-top: 0.5rem;">
-          <span class="tag">C (apprentissage N7)</span>
+          <span class="tag"><span class="lang-fr">C (apprentissage N7)</span><span class="lang-en">C (in progress at N7)</span></span>
           <span class="tag">Python (CPGE)</span>
-          <span class="tag">Mathématiques &amp; Modélisation</span>
-          <span class="tag">Physique appliquée</span>
-          <span class="tag">Suite Microsoft 365</span>
+          <span class="tag"><span class="lang-fr">Mathématiques &amp; Modélisation</span><span class="lang-en">Mathematics &amp; Modeling</span></span>
+          <span class="tag"><span class="lang-fr">Physique appliquée</span><span class="lang-en">Applied Physics</span></span>
+          <span class="tag"><span class="lang-fr">Suite Microsoft 365</span><span class="lang-en">Microsoft 365 Suite</span></span>
           <span class="tag">Premiere Pro</span>
           <span class="tag">Git &amp; GitHub</span>
         </div>
       </div>
 
       <div class="btn-group">
-        <button class="btn btn-primary" onclick="navigateTo('projets')">Découvrir mes réalisations</button>
-        <button class="btn btn-outline" onclick="navigateTo('contact')">Me contacter</button>
+        <button class="btn btn-primary" onclick="navigateTo('projets')">
+          <span class="lang-fr">Découvrir mes réalisations</span>
+          <span class="lang-en">View My Projects</span>
+        </button>
+        <button class="btn btn-outline" onclick="navigateTo('contact')">
+          <span class="lang-fr">Me contacter</span>
+          <span class="lang-en">Contact Me</span>
+        </button>
       </div>
     </section>
 
-    <!-- PAGE 2 : PROJETS -->
+    <!-- PAGE 2 : PROJETS / PROJECTS -->
     <section id="projets" class="page">
-      <h2>Projets &amp; Réalisations</h2>
-      <p>Aperçu de mes démarches d'ingénierie, hackathons et travaux pratiques de conception.</p>
+      <h2>
+        <span class="lang-fr">Projets &amp; Réalisations</span>
+        <span class="lang-en">Projects &amp; Achievements</span>
+      </h2>
+      <p>
+        <span class="lang-fr">Aperçu de mes démarches d'ingénierie, hackathons et travaux de conception.</span>
+        <span class="lang-en">Overview of engineering initiatives, hackathons, and design projects.</span>
+      </p>
 
       <div class="grid grid-2">
         <!-- Hackathon ENSEEIHT -->
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Hackathon d'intégration N7</div>
-            <div class="card-subtitle">ENSEEIHT — Début 1A</div>
+            <div class="card-title">
+              <span class="lang-fr">Hackathon d'intégration N7</span>
+              <span class="lang-en">N7 Integration Hackathon</span>
+            </div>
+            <div class="card-subtitle">
+              <span class="lang-fr">ENSEEIHT — Début 1A</span>
+              <span class="lang-en">ENSEEIHT — Year 1</span>
+            </div>
           </div>
           <p>
-            Participation au hackathon d'accueil de l'école axé sur la collaboration et l'idéation rapide. Développement d'un prototype technique et publication de la démo sur dépôt Git.
+            <span class="lang-fr">Participation au hackathon d'accueil axé sur l'idéation et la collaboration en temps limité. Développement d'un prototype fonctionnel avec démonstration publiée sur GitHub.</span>
+            <span class="lang-en">Participated in the school integration hackathon focused on fast ideation and collaborative design. Built a functional prototype with code and demo hosted on GitHub.</span>
           </p>
           <div class="tags">
-            <span class="tag">Travail d'équipe</span>
-            <span class="tag">Prototypage rapide</span>
+            <span class="tag"><span class="lang-fr">Travail d'équipe</span><span class="lang-en">Teamwork</span></span>
+            <span class="tag"><span class="lang-fr">Prototypage rapide</span><span class="lang-en">Rapid Prototyping</span></span>
             <span class="tag">Git / GitHub</span>
           </div>
         </div>
@@ -403,122 +500,179 @@
         <!-- Robot ramasseur de balles -->
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Robot ramasseur de balles de golf</div>
-            <div class="card-subtitle">Olympiades des Sciences de l'Ingénieur</div>
+            <div class="card-title">
+              <span class="lang-fr">Robot ramasseur de balles de golf</span>
+              <span class="lang-en">Golf Ball Retriever Robot</span>
+            </div>
+            <div class="card-subtitle">
+              <span class="lang-fr">Olympiades des Sciences de l'Ingénieur</span>
+              <span class="lang-en">Engineering Sciences Olympiads</span>
+            </div>
           </div>
           <p>
-            Étude et pré-conception d'un robot autonome dédié au ramassage de balles sur practice. Analyse du cahier des charges, modélisation cinématique, choix d'actionneurs et architecture globale.
+            <span class="lang-fr">Pré-conception d'un système autonome de collecte de balles sur practice : analyse fonctionnelle du cahier des charges, choix de motorisation et cinématique globale.</span>
+            <span class="lang-en">Preliminary design of an autonomous practice-range collection robot: functional requirement analysis, motor selection, and kinematic modeling.</span>
           </p>
           <div class="tags">
-            <span class="tag">Mécatronique</span>
-            <span class="tag">Sciences de l'Ingénieur</span>
-            <span class="tag">Cahier des charges</span>
+            <span class="tag"><span class="lang-fr">Mécatronique</span><span class="lang-en">Mechatronics</span></span>
+            <span class="tag"><span class="lang-fr">Sciences de l'Ingénieur</span><span class="lang-en">Engineering Sciences</span></span>
+            <span class="tag"><span class="lang-fr">Cahier des charges</span><span class="lang-en">Technical Specs</span></span>
           </div>
         </div>
 
         <!-- Programmation C / Algorithmique -->
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Bases matérielles et programmation C</div>
-            <div class="card-subtitle">Formation ingénieur N7</div>
+            <div class="card-title">
+              <span class="lang-fr">Programmation système &amp; Langage C</span>
+              <span class="lang-en">System Programming &amp; C Language</span>
+            </div>
+            <div class="card-subtitle">
+              <span class="lang-fr">Formation ingénieur N7</span>
+              <span class="lang-en">N7 Engineering Curriculum</span>
+            </div>
           </div>
           <p>
-            Développement d'algorithmes et structuration du code bas niveau en langage C pour préparer la couche logicielle des systèmes mécatroniques et embarqués.
+            <span class="lang-fr">Algorithmique, manipulation mémoire et développement bas niveau en langage C pour préparer l'architecture logicielle des systèmes mécatroniques et embarqués.</span>
+            <span class="lang-en">Algorithm design, memory management, and low-level C programming preparing the software layer for mechatronics and embedded systems.</span>
           </p>
           <div class="tags">
-            <span class="tag">Langage C</span>
-            <span class="tag">Algorithmique</span>
-            <span class="tag">Bas niveau</span>
+            <span class="tag"><span class="lang-fr">Langage C</span><span class="lang-en">C Language</span></span>
+            <span class="tag"><span class="lang-fr">Algorithmique</span><span class="lang-en">Algorithms</span></span>
+            <span class="tag"><span class="lang-fr">Bas niveau</span><span class="lang-en">Low-level</span></span>
           </div>
         </div>
 
         <!-- TIPE / Modélisation CPGE -->
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Modélisation &amp; Simulation scientifique</div>
-            <div class="card-subtitle">CPGE Paul Cézanne</div>
+            <div class="card-title">
+              <span class="lang-fr">Modélisation &amp; Simulation scientifique</span>
+              <span class="lang-en">Scientific Modeling &amp; Simulation</span>
+            </div>
+            <div class="card-subtitle">
+              <span class="lang-fr">CPGE Paul Cézanne</span>
+              <span class="lang-en">CPGE Paul Cézanne</span>
+            </div>
           </div>
           <p>
-            Résolution de problématiques physiques et mathématiques appliquées. Traitement de données, simulation numérique et scripts d'analyse sous Python.
+            <span class="lang-fr">Résolution de problématiques physiques et mathématiques appliquées : acquisition de données, modélisation numérique et scripts d'analyse sous Python.</span>
+            <span class="lang-en">Resolution of applied physical and mathematical problems: computational modeling, numeric data processing, and analysis scripts written in Python.</span>
           </p>
           <div class="tags">
             <span class="tag">Python</span>
-            <span class="tag">Calcul scientifique</span>
-            <span class="tag">Physique</span>
+            <span class="tag"><span class="lang-fr">Calcul scientifique</span><span class="lang-en">Scientific Computing</span></span>
+            <span class="tag"><span class="lang-fr">Physique</span><span class="lang-en">Physics</span></span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PAGE 3 : EXPÉRIENCES -->
+    <!-- PAGE 3 : EXPÉRIENCES / BACKGROUND -->
     <section id="experiences" class="page">
-      <h2>Parcours académique &amp; Expériences</h2>
+      <h2>
+        <span class="lang-fr">Parcours académique &amp; Expériences</span>
+        <span class="lang-en">Academic Background &amp; Experience</span>
+      </h2>
       
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-date">2024 — Présent</div>
-          <div class="timeline-title">Formation d'Ingénieur — Filière EEEA</div>
+          <div class="timeline-date">2024 — <span class="lang-fr">Présent</span><span class="lang-en">Present</span></div>
+          <div class="timeline-title">
+            <span class="lang-fr">Diplôme d'Ingénieur — Filière EEEA</span>
+            <span class="lang-en">Engineering Degree — EEEA Department</span>
+          </div>
           <div class="timeline-place">Toulouse INP — ENSEEIHT</div>
           <p>
-            Département Électronique, Énergie Électrique, Automatique. Orientation ciblée vers l'énergie, les chaînes de conversion et la commande des systèmes mécatroniques.
+            <span class="lang-fr">Département Électronique, Énergie Électrique, Automatique. Orientation ciblée vers l'énergie, les chaînes de conversion et la commande des systèmes mécatroniques.</span>
+            <span class="lang-en">Department of Electronics, Electrical Energy, Automation. Targeted trajectory toward energy systems, power conversion chains, and mechatronic control.</span>
           </p>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">2024 — Présent</div>
-          <div class="timeline-title">Campagne Junior Entreprise</div>
+          <div class="timeline-date">2024 — <span class="lang-fr">Présent</span><span class="lang-en">Present</span></div>
+          <div class="timeline-title">
+            <span class="lang-fr">Campagne Junior Entreprise</span>
+            <span class="lang-en">Junior Enterprise Campaign</span>
+          </div>
           <div class="timeline-place">N7 Consulting</div>
           <p>
-            Implication active dans la campagne de recrutement de la Junior Entreprise de l'école. Développement de compétences en gestion d'équipe, négociation et relation client.
+            <span class="lang-fr">Engagement actif au sein de la campagne de recrutement de la Junior Entreprise de l'école : négociation, gestion de projets associatifs et relation client.</span>
+            <span class="lang-en">Active engagement within the recruitment campaign for the school's Junior Enterprise: project management, team negotiation, and client relations.</span>
           </p>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-date">2022 — 2024</div>
-          <div class="timeline-title">Classes Préparatoires aux Grandes Écoles (MPSI / MP)</div>
+          <div class="timeline-title">
+            <span class="lang-fr">Classes Préparatoires aux Grandes Écoles (MPSI / MP)</span>
+            <span class="lang-en">Intensive STEM Preparatory Classes (MPSI / MP)</span>
+          </div>
           <div class="timeline-place">Lycée Paul Cézanne — Aix-en-Provence</div>
           <p>
-            Formation intensive en mathématiques, physique et sciences de l'ingénieur. Acquisition d'une grande rigueur méthodologique et consolidation des capacités d'analyse critique.
+            <span class="lang-fr">Formation d'excellence en mathématiques, physique et sciences de l'ingénieur. Rigueur analytique, sens de l'effort et esprit de synthèse.</span>
+            <span class="lang-en">Rigorous scientific curriculum focusing on mathematics, physics, and engineering fundamentals. Developed high-level analytical discipline and problem-solving resilience.</span>
           </p>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">Immersion découverte</div>
-          <div class="timeline-title">Stage en centrale nucléaire</div>
+          <div class="timeline-date">
+            <span class="lang-fr">Immersion découverte</span>
+            <span class="lang-en">Discovery Internship</span>
+          </div>
+          <div class="timeline-title">
+            <span class="lang-fr">Stage en centrale nucléaire</span>
+            <span class="lang-en">Nuclear Power Plant Internship</span>
+          </div>
           <div class="timeline-place">EDF</div>
           <p>
-            Observation encadrée par un ingénieur-docteur : sensibilisation aux réactions nucléaires, aux protocoles de sûreté et aux défis de la production d'énergie à grande échelle.
+            <span class="lang-fr">Immersion encadrée par un ingénieur-docteur : sensibilisation au cycle de production d'énergie, aux réactions nucléaires et aux exigences strictes de sûreté industrielle.</span>
+            <span class="lang-en">Observation supervised by a PhD research engineer: introduction to electricity generation cycles, nuclear reactions, and rigorous industrial safety standards.</span>
           </p>
         </div>
       </div>
     </section>
 
-    <!-- PAGE 4 : PASSIONS & ENGAGEMENTS -->
+    <!-- PAGE 4 : PASSIONS & ENGAGEMENTS / ACTIVITIES -->
     <section id="passions" class="page">
-      <h2>Engagements &amp; Centres d'intérêt</h2>
-      <p>Compétences transversales forgées par le sport collectif, l'expression orale et les projets associatifs.</p>
+      <h2>
+        <span class="lang-fr">Engagements &amp; Centres d'intérêt</span>
+        <span class="lang-en">Activities &amp; Personal Interests</span>
+      </h2>
+      <p>
+        <span class="lang-fr">Compétences transversales forgées par le sport d'équipe, l'expression orale et les projets associatifs.</span>
+        <span class="lang-en">Soft skills and values built through team athletics, public speaking, and community involvement.</span>
+      </p>
 
       <div class="grid grid-2">
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Communication &amp; Prise de parole</div>
+            <div class="card-title">
+              <span class="lang-fr">Éloquence &amp; Prise de parole</span>
+              <span class="lang-en">Public Speaking &amp; Rhetoric</span>
+            </div>
           </div>
           <p>
-            Lauréat / participant à des concours d'éloquence au lycée. Aisance à l'oral, structuration des idées et capacité à convaincre en public.
+            <span class="lang-fr">Participation à des concours d'éloquence au lycée. Aisance à l'oral, structuration du discours et clarté de conviction.</span>
+            <span class="lang-en">High school eloquence contest participant and finalist. Clear oral communication, structured reasoning, and audience engagement.</span>
           </p>
           <div class="tags">
-            <span class="tag">Éloquence</span>
-            <span class="tag">Vulgarisation</span>
-            <span class="tag">Débat</span>
+            <span class="tag"><span class="lang-fr">Éloquence</span><span class="lang-en">Public Speaking</span></span>
+            <span class="tag"><span class="lang-fr">Vulgarisation</span><span class="lang-en">Outreach</span></span>
+            <span class="tag"><span class="lang-fr">Débat</span><span class="lang-en">Debate</span></span>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Esprit d'équipe &amp; Résilience sportive</div>
+            <div class="card-title">
+              <span class="lang-fr">Collectif &amp; Résilience sportive</span>
+              <span class="lang-en">Team Spirit &amp; Athletic Discipline</span>
+            </div>
           </div>
           <p>
-            Pratique assidue en club : Rugby (6 ans), Judo (6 ans) et Handball (4 ans). Sens fort de la cohésion, du respect des règles et de la persévérance.
+            <span class="lang-fr">Pratique en club : Rugby (6 ans), Judo (6 ans) et Handball (4 ans). Goût de l'engagement, respect du collectif et dépassement de soi.</span>
+            <span class="lang-en">Competitive club sports: Rugby (6 yrs), Judo (6 yrs), and Handball (4 yrs). Values of team cohesion, discipline, and endurance under pressure.</span>
           </p>
           <div class="tags">
             <span class="tag">Rugby</span>
@@ -529,28 +683,36 @@
 
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Création visuelle &amp; Montage</div>
+            <div class="card-title">
+              <span class="lang-fr">Création vidéo &amp; Cinéma</span>
+              <span class="lang-en">Video Editing &amp; Cinema</span>
+            </div>
           </div>
           <p>
-            Passionné de cinéma et de culture générale. Conception graphique et montages vidéo sous Adobe Premiere Pro pour des projets personnels et associatifs.
+            <span class="lang-fr">Passionné de cinéma. Réalisation de montages vidéo sur Adobe Premiere Pro et retouches graphiques pour projets scolaires et associatifs.</span>
+            <span class="lang-en">Passionate about cinema. Video editing with Adobe Premiere Pro and graphic assets creation for academic and student initiatives.</span>
           </p>
           <div class="tags">
             <span class="tag">Premiere Pro</span>
-            <span class="tag">Montage photo</span>
+            <span class="tag"><span class="lang-fr">Montage</span><span class="lang-en">Editing</span></span>
             <span class="tag">Storytelling</span>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Engagement citoyen &amp; Tutorat</div>
+            <div class="card-title">
+              <span class="lang-fr">Tutorat &amp; Vie lycéenne</span>
+              <span class="lang-en">Tutoring &amp; Student Life</span>
+            </div>
           </div>
           <p>
-            Community manager du Conseil de la Vie Lycéenne (CVL), membre actif du foyer des élèves et séances de tutorat scolaire individuel.
+            <span class="lang-fr">Community manager du CVL, bénévole au foyer des élèves et séances de tutorat scolaire individuel.</span>
+            <span class="lang-en">High school student council (CVL) community manager, student union volunteer, and one-on-one academic tutoring.</span>
           </p>
           <div class="tags">
-            <span class="tag">Pédagogie</span>
-            <span class="tag">Vie associative</span>
+            <span class="tag"><span class="lang-fr">Pédagogie</span><span class="lang-en">Mentoring</span></span>
+            <span class="tag"><span class="lang-fr">Vie associative</span><span class="lang-en">Student Life</span></span>
             <span class="tag">Coordination</span>
           </div>
         </div>
@@ -560,18 +722,30 @@
     <!-- PAGE 5 : CONTACT -->
     <section id="contact" class="page">
       <h2>Contact</h2>
-      <p>Disponible pour échanger sur mes projets mécatroniques ou mes perspectives de stage.</p>
+      <p>
+        <span class="lang-fr">Disponible pour échanger sur mes projets mécatroniques ou des opportunités de stage.</span>
+        <span class="lang-en">Available for discussions regarding mechatronics projects or engineering internship opportunities.</span>
+      </p>
 
       <div class="card" style="margin-bottom: 2rem;">
         <p style="color: var(--text-main); margin-bottom: 0.5rem;"><strong>Alexis Gros</strong></p>
-        <p style="margin-bottom: 0.25rem;">Toulouse, France &bull; Mobilité Permis B</p>
+        <p style="margin-bottom: 0.25rem;">
+          <span class="lang-fr">Toulouse, France &bull; Vélo &amp; Permis B</span>
+          <span class="lang-en">Toulouse, France &bull; Cycling &amp; Driver's License (Category B)</span>
+        </p>
         <p style="margin-bottom: 0.25rem;">Email : <a href="mailto:alexis.gros04@gmail.com" style="color: inherit; text-decoration: underline;">alexis.gros04@gmail.com</a></p>
-        <p style="margin-bottom: 0;">Téléphone : +33 7 69 98 22 77</p>
+        <p style="margin-bottom: 0;"><span class="lang-fr">Téléphone</span><span class="lang-en">Phone</span> : +33 7 69 98 22 77</p>
       </div>
 
       <div class="btn-group">
-        <a href="mailto:alexis.gros04@gmail.com" class="btn btn-primary">Envoyer un email</a>
-        <a href="cv.pdf" target="_blank" class="btn btn-outline">Télécharger mon CV (PDF)</a>
+        <a href="mailto:alexis.gros04@gmail.com" class="btn btn-primary">
+          <span class="lang-fr">Envoyer un email</span>
+          <span class="lang-en">Send an Email</span>
+        </a>
+        <a href="cv.pdf" target="_blank" class="btn btn-outline">
+          <span class="lang-fr">Télécharger mon CV (PDF)</span>
+          <span class="lang-en">Download Resume (PDF)</span>
+        </a>
         <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
         <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
       </div>
@@ -579,26 +753,24 @@
   </main>
 
   <footer>
-    &copy; 2026 Alexis Gros &mdash; E-portfolio ENSEEIHT &bull; Hébergé sur GitHub Pages
+    &copy; 2026 Alexis Gros &mdash; E-portfolio ENSEEIHT &bull; 
+    <span class="lang-fr">Hébergé sur GitHub Pages</span>
+    <span class="lang-en">Hosted on GitHub Pages</span>
   </footer>
 
   <script>
     function navigateTo(pageId) {
-      // Masquer toutes les sections
       const pages = document.querySelectorAll('.page');
       pages.forEach(p => p.classList.remove('active'));
 
-      // Désélectionner tous les boutons du menu
-      const navButtons = document.querySelectorAll('.nav-btn');
+      const navButtons = document.querySelectorAll('nav .nav-btn');
       navButtons.forEach(btn => btn.classList.remove('active'));
 
-      // Activer la section cible
       const targetPage = document.getElementById(pageId);
       if (targetPage) {
         targetPage.classList.add('active');
       }
 
-      // Mettre en évidence le bon bouton de navigation
       const activeBtn = Array.from(navButtons).find(btn => 
         btn.getAttribute('onclick').includes(pageId)
       );
@@ -606,13 +778,31 @@
         activeBtn.classList.add('active');
       }
 
-      // Mettre à jour l'URL sans recharger
       history.pushState(null, null, '#' + pageId);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Gestion du rechargement et de l'historique de navigation
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      const toggleBtn = document.getElementById('lang-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.innerHTML = lang === 'fr' ? '🌐 <span>EN</span>' : '🌐 <span>FR</span>';
+      }
+      localStorage.setItem('n7_portfolio_lang', lang);
+    }
+
+    function toggleLanguage() {
+      const current = document.documentElement.lang || 'fr';
+      const next = current === 'fr' ? 'en' : 'fr';
+      setLanguage(next);
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
+      // Restauration de la langue
+      const savedLang = localStorage.getItem('n7_portfolio_lang') || 'fr';
+      setLanguage(savedLang);
+
+      // Navigation par ancre
       const hash = window.location.hash.replace('#', '');
       if (hash && document.getElementById(hash)) {
         navigateTo(hash);
